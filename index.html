@@ -1,0 +1,104 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"> -->
+     
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 10px;
+            background-color: darkmagenta;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .motor {
+            padding: 2px;
+            background-color: black;
+            border-radius: 35px;
+            color: #f8f9fa;
+            font-weight: 5px;
+            text-align: center;
+            width: 350px;
+            
+        }
+
+        .chat-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 999;
+        }
+
+        .chat-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        .chat-box {
+            position: fixed;
+            top: 120px;
+            left: 35%;
+            width: 400px;
+            height: 550px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: none; /* Initially hidden */
+            z-index: 998;
+        }
+
+        /* Additional styles for chat messages and input can be added here */
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to the Chatbot</h2>
+    </div>
+    <button id="toggleChat" class="chat-icon"><img src="{{ url_for('static', filename='chat-icon.svg') }}" alt="Chat Icon"></button>
+
+        <div class="motor">
+            <p>Your Intelligent Conversation Companion</p>
+        </div>
+        <div id="chatBox" class="chat-box">
+            <!-- Chat interface content will be displayed here -->
+            <!-- You can add chat messages dynamically using JavaScript -->
+        </div>
+
+   <!-- Include jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Add this script at the end of your index.html -->
+<script>
+    $(document).ready(function() {
+        // Toggle chat box when chat icon is clicked
+        $('#toggleChat').click(function() {
+            $('#chatBox').toggle();
+        });
+    });
+</script>
+
+
+</body>
+</html>
