@@ -9,20 +9,43 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
+            background-image: url('img.jpeg');
             margin: 0;
             padding: 0;
         }
         .container {
-            padding: 10px;
-            background-color: darkmagenta;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
         }
-        .container h2 {
+        .container h1 {
             margin-bottom: 20px;
             text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            text-shadow: 4px 4px gold;
         }
 
+        ul {
+            list-style-type: none;
+            padding: 20px;
+            overflow: hidden;
+            background-color: black;
+        }
+
+        li {
+            display: inline;
+        }
+
+        li a {
+            color: #ffffff;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        
+
+        .active {
+            background-color: lightgoldenrodyellow;
+            color: black;
+        }
         .motor {
             padding: 2px;
             background-color: black;
@@ -73,14 +96,35 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Welcome to the Chatbot</h2>
-    </div>
+
+    <header>
+        <nav>
+            <div class="container">
+                <h1>Customer Support Assistant</h1>
+                <ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li style="float:right">
+                        <a class="active" href="#">Log Out</a>
+                    </li> 
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- </nav> -->
+
     <button id="toggleChat" class="chat-icon"><img src="{{ url_for('static', filename='chat-icon.svg') }}" alt="Chat Icon"></button>
 
-        <div class="motor">
+        <!-- <div class="motor">
             <p>Your Intelligent Conversation Companion</p>
-        </div>
+        </div> -->
         <div id="chatBox" class="chat-box">
             <!-- Chat interface content will be displayed here -->
             <!-- You can add chat messages dynamically using JavaScript -->
