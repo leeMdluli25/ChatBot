@@ -35,7 +35,7 @@
         }
 
         li {
-            display: inline;
+            display: inline-block;
         }
 
         li a {
@@ -65,7 +65,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #007bff;
+            background-color: purple;
             color: #ffffff;
             border: none;
             border-radius: 50%;
@@ -96,14 +96,15 @@
 
         /* Additional styles for chat messages and input can be added here */
         .modal-header {
-            background-color: #007bff;
+            background-color: purple;
             color: #ffffff;
             padding: 10px;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            text-align: center;
         }
 
         .modal-header h3 {
@@ -118,6 +119,8 @@
             font-size: 20px;
             cursor: pointer;
         }
+
+        
 
         .chat-container {
             background-color: #f8f9fa;
@@ -148,7 +151,7 @@
 
         .send-button {
             padding: 10px 20px;
-            background-color: #007bff;
+            background-color: purple;
             color: #ffffff;
             border: none;
             border-radius: 5px;
@@ -156,7 +159,7 @@
         }
 
         .send-button:hover {
-            background-color: #0056b3;
+            background-color: blue;
         }
 
         .suggestions {
@@ -165,7 +168,8 @@
         .suggestion-btn,
         .btn-primary,
         .btn-secondary {
-            border-radius: 20px;
+            border-radius: 14px;
+
         }
         .heading {
             color: #007bff;
@@ -178,10 +182,10 @@
             border: 1px solid #e9ecef;
         }
         .message strong {
-            color: #007bff;
+            color: purple;
         }
         .message.user {
-            background-color: #e9ecef;
+            background-color: lightgoldenrodyellow;
             text-align: right;
         }
         .message.bot {
@@ -226,11 +230,10 @@
     <div class="modal fade" id="chatModal" tabindex="-1" role="dialog" aria-labelledby="chatModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <!-- <div id="chatBox" class="chat-box"> -->
                     <!-- Chat interface content will be displayed here -->
                 <div class="modal-header">
                     <h3 class="modal-title" id="chatModalLabel">Chat2</h3>
-                    <button id="closeChat" class="close"  data-dismiss="modal" aria-label="Close">
+                    <button id="closeChat" class="close-chat"  data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -239,7 +242,9 @@
                             <div id="chat-box" class="chat-messages">
                                 <!-- Chat messages will be appended here -->
                                 <div class="message bot">
-                                    <strong>Chat2Bot:</strong> Welcome to the Audit Intelligent Chatbot! The Audit Intelligent Chatbot chatbot is specifically designed to assist with financial and compliance audit manual methodologies and standards. Using advanced natural language processing (NLP), it provides accurate, contextual responses to your audit-related queries. Enjoy seamless access to vital information and enhance your auditing efficiency.
+                                    <strong>Chat2Bot:</strong>Alladeen is a full-featured software modern taxi business. It works the same way as Uber, bolt,
+                                    indriver but with more advanced features to give you an edge in the competitive online taxi
+                                    market.
                                 </div>
                             </div>
                             <div class="chat-input">
@@ -262,8 +267,9 @@
 
 
     <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
     // Speech recognition setup
         var recognition;
@@ -342,11 +348,11 @@
 
         // Question suggestions
         const suggestions = [
-            "More Info",
-            "What is auditing?",
-            "How do I conduct a compliance audit?",
-            "What is the purpose of financial audit manual?",
-            "What are audit procedures?",
+            "How to request a ride using ALLADEEN-RIDE APP?",
+            "Lost your Items?",
+            "How to report a non-profile matcher?",
+            "How to become a driver?",
+            "Emergency",
         ];
 
         function showSuggestions() {
@@ -382,21 +388,26 @@
 
             showSuggestions(); // Show suggestions when the modal is loaded
         });
-        </script>
 
-
-    <!-- Include jQuery -->
-
-    <!-- Add this script at the end of your index.html -->
-    <!-- <script>
         $(document).ready(function() {
             // Toggle chat box when chat icon is clicked
             $('#toggleChat').click(function() {
                 $('#chatBox').toggle();
             });
+
+            // Handle chat form submission
+            $('#chatForm').submit(function(event) {
+                event.preventDefault();
+                let userInput = $('#userInput').val();
+                $.post('/chat', { user_input: userInput }, function(data) {
+                    $('#chatBox').append('<div class="chat-message user">' + userInput + '</div>');
+                    $('#chatBox').append('<div class="chat-message bot">' + data.bot_response + '</div>');
+                    $('#userInput').val('');
+                });
+            });
         });
-</script> -->
 
 
+        </script>
 </body>
 </html>
